@@ -164,7 +164,7 @@ def add_documenType(name):
 
 
 
-def upload_document(document, title, created=None, correspondent=None, document_type=None, tags=None, file="image/jpg"):
+def upload_document(document, title, created=None, correspondent=None, document_type=None, tags=None, file_type="image/jpg"):
 
     # URL del endpoint
     url = baseUrl+"/api/documents/post_document/"
@@ -183,7 +183,7 @@ def upload_document(document, title, created=None, correspondent=None, document_
     }
 
     files = {
-    "document": (title+".jpg", document, "image/jpeg")
+    "document": (title+".jpg", document, file_type)
     }
 
     
