@@ -7,12 +7,24 @@ from telegramMenus import menu_emisor, menu_final, menu_opciones, menu_tags, men
 import yaml
 
 async def recibir_documento(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    context.user_data["document"] = update.message.photo[-1]
+    doc_type=""
+    if update.message.photo:
+        context.user_data["document"] = update.message.photo[-1]
+        context.user_data["doc_type"]="image/jpg"
+    if update.message.document:
+        if update.message.document.mime_type == "application/pdf":
+            await context.bot.reply_text("📄 Has enviado un archivo PDF.")
+            context.user_data["document"] = update.message.document
+            context.user_data["doc_type"]="application/pdf"
+        else:
+            await context.bot.reply_text( f"📁 Has enviado un documento ({update.message.document.mime_type}).")
+        return
     context.user_data["name"] = update.message.caption if update.message.caption else context.user_data["document"].file_id
     context.user_data["tags"] = []
     context.user_data["correspondent"] = None
     context.user_data["type"] = None
     context.user_data["fecha"] = None
+
 
 
     # Información del documento
@@ -56,7 +68,8 @@ async def manejar_opcion(update: Update, context: ContextTypes.DEFAULT_TYPE):
                                   context.user_data["fecha"],
                                   context.user_data["correspondent"],
                                   context.user_data["type"],
-                                  context.user_data["tags"])
+                                  context.user_data["tags"],
+                                  context.user_data["doc_type"])
             await query.message.reply_text("Subida realizada con exito")
             context.user_data.clear()
         
