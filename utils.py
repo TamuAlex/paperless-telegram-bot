@@ -2,10 +2,10 @@ import requests
 import yaml
 
 with open("config.yaml", "r", encoding="utf-8") as f:
-    data = yaml.safe_load(f)
+    config = yaml.safe_load(f)
 
-baseUrl = data["paperless-ngx"]["host"]+":"+data["paperless-ngx"]["port"]
-token = data["telegram"]["token_bot"]
+baseUrl = config["paperless-ngx"]["host"]+":"+config["paperless-ngx"]["port"]
+token = config["paperless-ngx"]["token"]
 
 def get_correspondents():
 
@@ -22,11 +22,11 @@ def get_correspondents():
 
     # Verificar respuesta
     if response.status_code == 200:
-        data = response.json()
+        correspondets = response.json()
     else:
         print(f"Error {response.status_code}: {response.text}")
 
-    for i in data["results"]:
+    for i in correspondets["results"]:
         dictionary[i["name"]]=i["id"]
     
     return dictionary
@@ -36,7 +36,8 @@ def add_correspondent(name):
     # URL del endpoint
     url = baseUrl+"/api/correspondents/"
 
-
+    print(url)
+    print(token)
     # Headers con el token
     headers = {
         "Authorization": f"Token {token}",
@@ -74,11 +75,11 @@ def get_tags():
 
     # Verificar respuesta
     if response.status_code == 200:
-        data = response.json()
+        tags = response.json()
     else:
         print(f"Error {response.status_code}: {response.text}")
 
-    for i in data["results"]:
+    for i in tags["results"]:
         dictionary[i["name"]]=i["id"]
     
     return dictionary
@@ -125,11 +126,11 @@ def get_documentType():
 
     # Verificar respuesta
     if response.status_code == 200:
-        data = response.json()
+        documentType = response.json()
     else:
         print(f"Error {response.status_code}: {response.text}")
 
-    for i in data["results"]:
+    for i in documentType["results"]:
         dictionary[i["name"]]=i["id"]
     
     return dictionary

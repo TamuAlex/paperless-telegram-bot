@@ -117,7 +117,7 @@ async def manejar_opcion(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
                 context.user_data["estado"]="menu"
                 await query.message.reply_text("Emisor añadido")
-                await update.message.reply_text(
+                await query.message.reply_text(
                 "📸 Imagen recibida.\n¿Qué quieres hacer?",
                 reply_markup=menu_opciones()
                 )
