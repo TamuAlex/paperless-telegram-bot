@@ -1,0 +1,12 @@
+paperless-ngx:
+  host: "http://yourPaperlessIP"
+  port: "YourPaperlessPort"
+  token: "yourGeneratedPaperlessToken"
+
+telegram:
+  token_bot: "YourTelegramBotToken"
+  allowed_users:
+    - 000000000   #User1
+    - 111111111   #User2
+
+lang: "en" #Supported: es, en
