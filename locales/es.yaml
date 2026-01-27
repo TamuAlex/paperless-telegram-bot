@@ -1,0 +1,42 @@
+file_recieved: "📄 Documento recibido:\nNombre: {name}\nTamaño: {file_size} bytes\n"
+menu_title: "¿Qué quieres hacer?"
+successful_upload: "Subida realizada con exito"
+operation_cancelled: "Cancelando operación, por favor, intentalo de nuevo"
+new_name: "✏️ Escribe el nuevo nombre:"
+tag_added: "Tag añadido"
+doc_type_added: "Tipo de documento añadido"
+new_correspondent: "✅ nuevo emisor registrado y añadido: {emisor}"
+new_correspondent_error: "❌ Ha ocurrido un error al añadir el emisor: {emisor}"
+choose_tag: "🏷️ Elige el tag correspondiente:"
+write_date: "✏️ Escribe la nueva fecha (YYYY-MM-DD):"
+choose_doc_type: "📄 Elige el tipo correspondiente:"
+write_correspondent: "✏️ Escribe el emisor (sin espacios y en minuscula):"
+operation_cancelled_menu: "❌ Operación cancelada"
+check_message_before_send: "Nombre: {name} \nemisor: {correspondent}\ntags: {tags}\ntipo: {doc_type}\nfecha: {date}\n"
+last_check: "Es la info correcta?"
+name_changed: "✅ Nombre cambiado a: {nuevo_nombre}"
+new_tag: "✅ nuevo tag registrado: {nuevo_tag}. Por favor, no olvides añadirlo!"
+new_date: "✅ Fecha cambiada a: {nueva_fecha}."
+new_doc_type: "✅ nuevo tipo de documento registrado: {nuevo_type}. Por favor, no olvides añadirlo!"
+correspondent_registered: "✅ emisor registrado: {emisor}."
+correspondent_not_found: "❓​ Emisor no encontrado, quieres añadirlo?"
+
+
+menu_options_edit_name: "✏️ Editar nombre"
+menu_options_add_tag: "🏷️ Añadir tag"
+menu_options_edit_date: "🗓️​ Editar fecha"
+menu_options_edit_document_type: "📄​ Editar tipo documento"
+menu_options_edit_correspondent: "📤​ Editar emisor"
+menu_options_cancel: "❌ Cancelar"
+menu_options_send: "✅​ Enviar"
+
+menu_correspondent_cancel: "❌ Cancelar"
+menu_correspondent_add: "✅​ Añadir"
+
+last_menu_no: "❌ No"
+last_menu_yes: "✅​ Si"
+
+menu_tags_add_tag: "➕​ Añadir Tag"
+
+menu_doc_type_add_type: "➕​ Añadir tipo"
+  

@@ -1,11 +1,44 @@
 import requests
 import yaml
+from pathlib import Path
 
 with open("config.yaml", "r", encoding="utf-8") as f:
     config = yaml.safe_load(f)
 
 baseUrl = config["paperless-ngx"]["host"]+":"+config["paperless-ngx"]["port"]
 token = config["paperless-ngx"]["token"]
+
+WHITELIST_USERS = set(config["telegram"]["allowed_users"])
+
+
+
+_LOCALES_PATH = Path("locales")
+_LANG_CACHE = {}
+_DEFAULT_LANG = "en"
+
+
+def _load_lang(lang: str) -> dict:
+    file = _LOCALES_PATH / f"{lang}.yaml"
+    if not file.exists():
+        file = _LOCALES_PATH / f"{_DEFAULT_LANG}.yaml"
+
+    with open(file, "r", encoding="utf-8") as f:
+        return yaml.safe_load(f) or {}
+    
+def t(key: str, lang: str = _DEFAULT_LANG, **kwargs) -> str:
+    if lang not in _LANG_CACHE:
+        _LANG_CACHE[lang] = _load_lang(lang)
+
+    text = _LANG_CACHE[lang].get(key)
+
+    if text is None:
+        return f"[{key}]"
+
+    try:
+        return text.format(**kwargs)
+    except KeyError as e:
+        return f"[MISSING {e.args[0]} in {key}]"
+    
 
 def get_correspondents():
 
@@ -209,4 +242,6 @@ def upload_document(document, title, created=None, correspondent=None, document_
         print(response.json())
     else:
         print(response.status_code, response.text)
+
+
 
