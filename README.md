@@ -1,7 +1,11 @@
 # 📄 Paperless Telegram Bot
 
 Telegram bot to interact with your Paperless-ngx instance, allowing you to send documents directly from Telegram.
+## 💖 Support
 
+If you find this project useful, consider supporting its development:
+
+[![PayPal](https://img.shields.io/badge/PayPal-Donate-blue.svg?logo=paypal)](https://www.paypal.com/donate/?hosted_button_id=FTZWS9USG8GB4)
 ## 🌟 Features
 
 - 📤 **Document upload**: Upload documents to Paperless-ngx directly from Telegram
@@ -76,11 +80,7 @@ The bot will start and be ready to receive commands.
    - Document type
 3. Confirm and the document will be uploaded to Paperless-ngx
 
-## 💖 Support / Apoyo
 
-If you find this project useful, consider supporting its development:
-
-[![PayPal](https://img.shields.io/badge/PayPal-Donate-blue.svg?logo=paypal)](https://www.paypal.com/donate/?hosted_button_id=FTZWS9USG8GB4)
 
 ## 📁 Project structure
 
@@ -90,6 +90,7 @@ paperless-telegram-bot/
 ├── telegramMenus.py     # Menu and keyboard definitions
 ├── utils.py             # Helper functions
 ├── config.yaml          # Configuration file
+├── requirements.txt     # Requirements file
 ├── locales/             # Translation files
 │   ├── es.yaml
 │   ├── en.yaml
