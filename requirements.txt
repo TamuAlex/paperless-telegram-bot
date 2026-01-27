@@ -1,0 +1,10 @@
+# Paperless Telegram Bot - Requirements
+
+# Telegram Bot API
+python-telegram-bot
+
+# HTTP Requests
+requests
+
+# YAML Configuration
+PyYAML
