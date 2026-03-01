@@ -292,6 +292,7 @@ async def hello(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 
 def autorizado(update: Update) -> bool:
+    print(update.effective_user.id)
     return update.effective_user.id in utils.WHITELIST_USERS
 
 
