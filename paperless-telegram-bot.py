@@ -8,9 +8,12 @@ import yaml
 
 async def recibir_documento(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not autorizado(update):
+        print("no autorizado")
         return
     doc_type=""
+    print("documento recibido")
     if update.message.photo:
+        print("foto recibida")
         context.user_data["document"] = update.message.photo[-1]
         context.user_data["doc_type"]="image/jpg"
     if update.message.document:
@@ -286,7 +289,9 @@ async def recibir_texto(update, context: ContextTypes.DEFAULT_TYPE):
 
 async def hello(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if not autorizado(update):
+        print("entra en autorizar hello")
         return
+    print("entra en hello")
     await update.message.reply_text(f'Hello {update.effective_user.first_name}')
 
 
@@ -306,7 +311,7 @@ lang = data["lang"]
 try:        
     app = ApplicationBuilder().token(bot_token).build()
     handler_documentos = MessageHandler(
-        filters.Document.ALL,
+        filters.Document.ALL | filters.PHOTO,
         recibir_documento
     )
 
